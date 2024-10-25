@@ -6,7 +6,7 @@ form.addEventListener("submit", (event) => {
   const entries = new FormData(event.target);
   const { dividend, divider } = Object.fromEntries(entries);
 
- console.log(divider)
+	console.log(typeof dividend)
   if (dividend === "" || divider === "") {
     result.innerText = 'Division not performed. Both values are required in inputs. Try again.';
     return; //stop function execution
