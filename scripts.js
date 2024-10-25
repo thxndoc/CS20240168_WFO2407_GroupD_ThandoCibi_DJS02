@@ -14,6 +14,7 @@ form.addEventListener("submit", (event) => {
     result.innerText = 'Division not performed. Both values are required in inputs. Try again.';
     return; //stop function execution
   }
+
   if (divider === 0) {
     try {
       throw new Error('Division not performed. Invalid number provided. Try again');
@@ -21,6 +22,10 @@ form.addEventListener("submit", (event) => {
 			result.innerText = error.message
       console.error(error);
     }
+
+		if (isNaN(dividend) || isNaN(divider)) {
+			throw new Error('Something critical went wrong. Please reload the page')
+		}
     return;
   }
   result.innerText = Math.floor(dividend / divider);
