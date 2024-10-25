@@ -4,9 +4,12 @@ const result = document.querySelector("[data-result]");
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const entries = new FormData(event.target);
-  const { dividend, divider } = Object.fromEntries(entries);
+  let { dividend, divider } = Object.fromEntries(entries);
+	//console.log(typeof dividend)
 
-	console.log(typeof dividend)
+	dividend = Number(dividend);
+	divider = Number(divider);
+
   if (dividend === "" || divider === "") {
     result.innerText = 'Division not performed. Both values are required in inputs. Try again.';
     return; //stop function execution
