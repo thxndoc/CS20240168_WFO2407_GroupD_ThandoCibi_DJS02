@@ -9,5 +9,13 @@ form.addEventListener("submit", (event) => {
     alert('Division not performed. Both values are required in inputs. Try again.')
     return; //stop function execution
   }
+  if (divider === 0) {
+    try {
+      throw new Error('Division not performed. Invalid number provided. Try again');
+    } catch (error) {
+      console.error(error);
+    }
+    return;
+  }
   result.innerText = Math.floor(dividend / divider);
 });
