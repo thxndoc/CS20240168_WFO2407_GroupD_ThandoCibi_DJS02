@@ -10,7 +10,7 @@ form.addEventListener("submit", (event) => {
 	
 		if (dividend === '' || divider === '') {
 			result.innerText = 'Division not performed. Both values are required in inputs. Try again.';
-			return; //stop function execution
+			return; // stop function execution
 		} 
 
 		dividend = Number(dividend);
@@ -23,7 +23,7 @@ form.addEventListener("submit", (event) => {
             result.innerText = error.message
             console.error(error);
         }
-        return;
+        return; // stop function execution
     }
 
     if (isNaN(dividend) || isNaN(divider)) {
