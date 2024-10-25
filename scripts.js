@@ -12,7 +12,11 @@ form.addEventListener("submit", (event) => {
 		dividend = Number(dividend);
 		divider = Number(divider);
 	
-		if (dividend === "" || divider === "") {
+		if (isNaN(dividend) || isNaN(divider)) {
+			throw new Error('⚠️Something critical went wrong. Please reload the page⚠️')
+		}
+
+		if (dividend === 0 || divider === 0) {
 			result.innerText = 'Division not performed. Both values are required in inputs. Try again.';
 			return; //stop function execution
 		}
@@ -25,14 +29,24 @@ form.addEventListener("submit", (event) => {
 				console.error(error);
 			}
 	
-			if (isNaN(dividend) || isNaN(divider)) {
-				throw new Error('Something critical went wrong. Please reload the page')
-			}
-			return;
 		}
 		result.innerText = Math.floor(dividend / divider);
 	} catch (error) {
 		console.error(error);
+		
+		document.body.textContent = '';
 
+    errorMessage.innerText = error.message;
+
+		errorMessage.style.height = '100vh'
+		errorMessage.style.display = 'flex';
+		errorMessage.style.alignItems = 'center';
+		errorMessage.style.justifyContent = 'center';
+    errorMessage.style.color = 'red';
+    errorMessage.style.fontSize = '24px';
+		errorMessage.style.fontWeight = 'bold'
+    //errorMessage.style.textAlign = 'center';
+
+		document.body.appendChild(errorMessage)
 	}
 });
