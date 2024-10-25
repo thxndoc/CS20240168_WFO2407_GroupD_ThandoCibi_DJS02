@@ -5,15 +5,17 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
   const entries = new FormData(event.target);
   const { dividend, divider } = Object.fromEntries(entries);
-  console.log(entries)
+
+ console.log(divider)
   if (dividend === "" || divider === "") {
-    alert('Division not performed. Both values are required in inputs. Try again.')
+    result.innerText = 'Division not performed. Both values are required in inputs. Try again.';
     return; //stop function execution
   }
   if (divider === 0) {
     try {
       throw new Error('Division not performed. Invalid number provided. Try again');
     } catch (error) {
+			result.innerText = error.message
       console.error(error);
     }
     return;
